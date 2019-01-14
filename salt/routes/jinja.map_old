@@ -1,0 +1,14 @@
+{% set route = salt['grains.filter_by']({
+    'dev': {
+        'route1': '10.0.0.0 via 192.168.99.1
+    },
+    'stag': {
+        'route1': '10.0.0.0 via 192.168.99.1
+    },
+    'qa': {
+        'route1': '10.0.0.0 via 192.168.99.1
+    },
+    'default': {
+        'route1': '10.0.0.0 via 192.168.99.1
+    },
+}, grain='zone', default='default') %}

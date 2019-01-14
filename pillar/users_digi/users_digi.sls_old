@@ -1,0 +1,17 @@
+group_digi:
+  zerohour:
+    fullname: zerohour
+    g_id:
+      - 700
+
+users_digi:
+  zerohour:
+    fullname: zerohour
+    groups:
+      - zerohour
+    u_id:
+      - 700
+    g_id:
+      - 700
+    shadow:
+      - $6$h08c7B92$Fs3OAHCbH4biXmjARNFPfdCj2aWG5Itx5X4PGbOugsqEl8Rj9oV0bXfu6OFA5c2Ncxo3g2PhlxikPY85Q0Jon/

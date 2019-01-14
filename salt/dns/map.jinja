@@ -1,0 +1,27 @@
+{% set excluded_ifaces = ['docker0','lo','idrac'] %}
+
+{% set base_domain = salt['grains.filter_by']({
+    'dev': 'qa.shared-bo.mtv1.vrsn.com',
+    'stage': 'ssoqa-bo.mtv1.vrsn.com',
+    'qa': 'ssoqa-fo.mtv1.vrsn.com',
+    'default': 'vrsn.com',
+}, grain='zone', default='default') %}
+
+{% set dns_servers = salt['grains.filter_by']({
+    'dev': {
+        'DNS1': '10.198.138.20',
+        'DNS2': '10.198.138.21'
+    },
+    'stage': {
+        'DNS1': '10.204.156.20',
+        'DNS2': '10.204.156.21'
+    },
+    'qa': {
+        'DNS1': '10.204.24.20',
+        'DNS2': '10.204.24.21'
+    },
+    'default': {
+	    'DNS1': '208',
+	    'DNS2': '208'
+    },
+}, grain='zone', default='default') %}

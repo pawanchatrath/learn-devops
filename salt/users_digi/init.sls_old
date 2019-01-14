@@ -1,0 +1,30 @@
+{% for gname, list in pillar.get('group_digi', {}).items() %}
+{{ gname }}
+  group.present:
+    - fullname: {{ list.get('fullname','') }}
+    - gid: {{ list.get('g_id','')  }}
+
+{% endfor %}
+
+{% for name, details in pillar.get('users_digi', {}).items() %}
+{{ name }}:
+  user.present:
+    - fullname: {{ details.get('fullname','') }}
+    - name: {{ name }}
+    - uid: {{ details.get('u_id','')  }}
+    - gid: {{ details.get('g_id','')  }}
+    - shell: /bin/bash
+    - home: /home/{{ name }}
+
+#  {% if 'pub_ssh_keys' in details %}
+#  ssh_auth.present:
+#    - user: {{ name }}
+#    - names:
+#      {% for pub_ssh_key in details.get('pub_ssh_keys', []) %}
+#        - {{ pub_ssh_key }}
+#      {% endfor %}
+#    - require:
+#      - user: {{ name }}
+#  {% endif %}
+
+{% endfor %}
